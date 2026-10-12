@@ -1,8 +1,10 @@
+from pathlib import Path
 from sentence_transformers import SentenceTransformer
 import faiss
 import numpy as np
 
-file_path="data_source.txt"
+# Path to shared data_source.txt at repository root
+file_path = str(Path(__file__).resolve().parent.parent / "data_source.txt")
 model_name="all-MiniLM-L6-v2"
 model=SentenceTransformer(model_name)
 vector_index=None

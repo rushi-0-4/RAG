@@ -58,14 +58,18 @@ User Query ──► SentenceTransformer Embed ──► Search (Top 5 Chunks)
 ## 📁 Project Structure
 
 ```
-Version_1_Basic_RAG/
-├── data_source.txt      # Source knowledge document
-├── rag.py               # Document loading, embedding, FAISS indexing, and retrieval
-├── chatbot.py           # Ollama LLM integration and prompt formulation
-├── main.py              # Interactive CLI loop for chatting
-├── pyproject.toml       # Project configuration and dependencies
-├── uv.lock              # Lockfile for reproducible environment
-└── README.md            # Version 1 documentation
+Learn_RAG/
+├── data_source.txt      # Shared source knowledge document
+├── pyproject.toml       # Shared project configuration and dependencies
+├── uv.lock              # Shared lockfile
+├── .python-version      # Python runtime specification
+├── plan/
+│   └── plan.txt         # Step-by-step roadmap
+└── Version_1_Basic_RAG/
+    ├── rag.py           # Document loading, embedding, FAISS indexing, and retrieval
+    ├── chatbot.py       # Ollama LLM integration and prompt formulation
+    ├── main.py          # Interactive CLI loop for chatting
+    └── README.md        # Version 1 documentation
 ```
 
 ---
