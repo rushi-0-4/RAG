@@ -1,11 +1,32 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
+*.pyc
 build/
 dist/
 wheels/
 *.egg-info
 
 # Virtual environments
-.venv
+.venv/
+venv/
+env/
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+
+# IDE & Editor files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+*.log
+
+# Project specific
 plan/
