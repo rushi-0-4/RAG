@@ -7,9 +7,9 @@ import numpy as np
 file_path = str(Path(__file__).resolve().parent.parent / "data_source.txt")
 model_name="all-MiniLM-L6-v2"
 model=SentenceTransformer(model_name)
-vector_index=None
-chunks=[]
-def load_data(file_path):
+vector_index: faiss.IndexFlatL2 | None = None
+chunks: list[str] = []
+def load_data(file_path: str) -> str:
     '''
     Load the data from a text file and return it as a string. 
     '''
@@ -18,7 +18,7 @@ def load_data(file_path):
         with open(file_path,'r',encoding='utf-8') as f:
             return f.read()
     else:
-        print("Provide .txt extension files only")
+        raise ValueError("Provide .txt extension files only")
 
 def split_text(text):
     '''
@@ -56,8 +56,14 @@ def search(query,top=5):
     Search for the most similar chunks to the query using the FAISS index.
     Returns the top N most similar chunks.
     '''
+    global vector_index
+    if vector_index is None:
+        indexing()
+    if vector_index is None:
+        raise RuntimeError("Vector index has not been initialized.")
+
     embed_query=model.encode([query]).astype('float32')
     distances, indices=vector_index.search(embed_query,top)
-    vector_chunks=[chunks[i] for i in indices[0]]
+    vector_chunks=[chunks[i] for i in indices[0] if 0 <= i < len(chunks)]
     return vector_chunks
 indexing()

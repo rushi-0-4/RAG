@@ -13,3 +13,10 @@ dependencies = [
     "sentence-transformers>=6.0.1",
     "transformers>=5.17.0",
 ]
+
+[tool.pyright]
+extraPaths = [
+    "Version_1_Basic_RAG",
+    "Version_2_Chunking_With_Overlap",
+]
+
